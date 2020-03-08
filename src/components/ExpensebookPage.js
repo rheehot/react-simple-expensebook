@@ -2,11 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { ExpensebookHead } from './ExpensebookHead';
 import { ExpensebookFilter } from './ExpensebookFilter';
+import { ExpenseItemList } from './ExpenseItemList';
 
 const PageBody = styled.main`
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 32rem;
+  width: 24rem;
   height: 48rem;
   padding: 2rem;
   background: white;
@@ -19,6 +21,7 @@ export const ExpensebookPage = () => {
     <PageBody>
       <ExpensebookHead />
       <ExpensebookFilter />
+      <ExpenseItemList />
     </PageBody>
   );
 };

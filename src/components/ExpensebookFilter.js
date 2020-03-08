@@ -30,7 +30,7 @@ export const ExpensebookFilter = () => {
       <select name="filter" id="expensebook-filter">
         <option value="all">전체</option>
         <option value="meal">식사</option>
-        <option value="grocery">생필품</option>
+        <option value="grocery">식료품</option>
         <option value="transportation">교통</option>
         <option value="housekeeping">생활</option>
         <option value="medical">의료</option>

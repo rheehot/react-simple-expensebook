@@ -1,4 +1,10 @@
 export const ocGray3 = '#dee2e6';
 export const ocGray5 = '#adb5bd';
+export const ocGray7 = '#495057';
 export const ocGray9 = '#212529';
 export const ocRed8 = '#e03131';
+export const ocLime2 = '#d8f5a2';
+export const ocYellow2 = '#ffec99';
+export const ocOrange2 = '#ffd8a8';
+export const ocBlue3 = '#74c0fc';
+export const ocGrape3 = '#e599f7';
