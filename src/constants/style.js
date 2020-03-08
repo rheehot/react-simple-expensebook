@@ -8,3 +8,4 @@ export const ocYellow2 = '#ffec99';
 export const ocOrange2 = '#ffd8a8';
 export const ocBlue3 = '#74c0fc';
 export const ocGrape3 = '#e599f7';
+export const ocCyan8 = '#0c8599';
