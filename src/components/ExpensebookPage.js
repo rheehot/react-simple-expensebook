@@ -12,7 +12,7 @@ const PageBody = styled.main`
   display: flex;
   flex-direction: column;
   width: 24rem;
-  height: 48rem;
+  height: 40rem;
   padding: 2rem;
   background: white;
   border-radius: 1rem;
