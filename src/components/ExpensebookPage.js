@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ExpensebookHead } from './ExpensebookHead';
+import { ExpensebookFilter } from './ExpensebookFilter';
 
 const PageBody = styled.main`
   display: flex;
@@ -17,6 +18,7 @@ export const ExpensebookPage = () => {
   return (
     <PageBody>
       <ExpensebookHead />
+      <ExpensebookFilter />
     </PageBody>
   );
 };
