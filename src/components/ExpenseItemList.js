@@ -11,11 +11,11 @@ const ItemListWrapper = styled.section`
 `;
 
 export const ExpenseItemList = () => {
-  const expenses = useExpenseState();
+  const { expenses, currentFilter, filteredExpenses } = useExpenseState();
 
   return (
     <ItemListWrapper>
-      {expenses.map(expense => (
+      {(currentFilter === 'all' ? expenses : filteredExpenses).map(expense => (
         <ExpenseItem
           key={expense.id}
           category={expense.category}

@@ -30,7 +30,7 @@ const calculateTotalExpense = expenses =>
   }, 0);
 
 export const ExpensebookHead = () => {
-  const expenses = useExpenseState();
+  const { expenses } = useExpenseState();
 
   const formattedToday = useMemo(
     () =>
