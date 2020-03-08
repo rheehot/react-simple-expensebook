@@ -1,6 +1,7 @@
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { ocGray3 } from './constants/style';
+import { ExpensebookPage } from './components/ExpensebookPage';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -13,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
     
     background: ${ocGray3};
   }
@@ -23,19 +25,11 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-const AppWrapper = styled.main`
-  display: flex;
-  flex-direction: column;
-  width: 512px;
-  height: 768px;
-  overflow-y: scroll;
-`;
-
 function App() {
   return (
     <>
       <GlobalStyle />
-      <AppWrapper />
+      <ExpensebookPage />
     </>
   );
 }
