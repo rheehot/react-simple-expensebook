@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ExpenseItem } from './ExpenseItem';
+import { useExpenseState } from '../contexts/ExpenseContext';
 
 const ItemListWrapper = styled.section`
   display: flex;
@@ -10,13 +11,18 @@ const ItemListWrapper = styled.section`
 `;
 
 export const ExpenseItemList = () => {
+  const expenses = useExpenseState();
+
   return (
     <ItemListWrapper>
-      <ExpenseItem tag="meal" title="용개반점" amount="7000" />
-      <ExpenseItem tag="grocery" title="양배추" amount="5000" />
-      <ExpenseItem tag="transportation" title="택시비" amount="15000" />
-      <ExpenseItem tag="housekeeping" title="관리비" amount="50000" />
-      <ExpenseItem tag="medical" title="병원 진료" amount="7000" />
+      {expenses.map(expense => (
+        <ExpenseItem
+          key={expense.id}
+          category={expense.category}
+          title={expense.title}
+          amount={expense.amount}
+        />
+      ))}
     </ItemListWrapper>
   );
 };

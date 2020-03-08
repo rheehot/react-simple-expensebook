@@ -74,10 +74,10 @@ const DeleteIcon = styled.div`
   }
 `;
 
-export const ExpenseItem = ({ tag, title, amount }) => {
+export const ExpenseItem = ({ category, title, amount }) => {
   return (
     <ItemBody>
-      <ItemTag tag={tag}>{tags[tag]}</ItemTag>
+      <ItemTag tag={category}>{tags[category]}</ItemTag>
       <p className="item-title">{title}</p>
       <strong className="item-amount">-{amount}원</strong>
       <DeleteIcon>
@@ -88,7 +88,7 @@ export const ExpenseItem = ({ tag, title, amount }) => {
 };
 
 ExpenseItem.defaultProps = {
-  tag: 'meal',
+  category: 'meal',
   title: '',
   amount: '',
 };
