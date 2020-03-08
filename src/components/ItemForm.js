@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { ocGray9 } from '../constants/style';
 
@@ -31,21 +31,8 @@ const InputField = styled.div`
   }
 `;
 
-export const ItemForm = props => {
-  const [form, setForm] = useState({
-    title: props.title,
-    amount: props.amount,
-    category: props.category,
-  });
-  const { title, amount, category } = form;
-
-  const handleChangeField = e => {
-    const { name, value } = e.target;
-    setForm(prevForm => ({
-      ...prevForm,
-      [name]: value,
-    }));
-  };
+export const ItemForm = ({ formValues, onChangeField }) => {
+  const { title, amount, category } = formValues;
 
   return (
     <Form>
@@ -55,7 +42,7 @@ export const ItemForm = props => {
           name="title"
           type="text"
           value={title}
-          onChange={handleChangeField}
+          onChange={onChangeField}
         />
       </InputField>
       <InputField>
@@ -66,12 +53,12 @@ export const ItemForm = props => {
           type="number"
           min={0}
           value={amount}
-          onChange={handleChangeField}
+          onChange={onChangeField}
         />
       </InputField>
       <InputField>
         <label htmlFor="category">카테고리</label>
-        <select name="category" value={category} onChange={handleChangeField}>
+        <select name="category" value={category} onChange={onChangeField}>
           <option value="meal">식사</option>
           <option value="grocery">식료품</option>
           <option value="transportation">교통</option>
@@ -84,9 +71,12 @@ export const ItemForm = props => {
 };
 
 ItemForm.defaultProps = {
-  title: '',
-  amount: 0,
-  category: 'meal',
+  formValues: {
+    title: '',
+    amount: 0,
+    category: 'meal',
+  },
+  onChangeField: () => {},
 };
 
 ItemForm.displayName = 'ItemForm';
