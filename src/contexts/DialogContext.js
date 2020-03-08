@@ -8,6 +8,7 @@ const initialState = {
   modify: false,
   delete: false,
   deleteTargetId: null,
+  modifyTargetId: null,
 };
 
 function dialogReducer(state, action) {
@@ -21,6 +22,7 @@ function dialogReducer(state, action) {
       return {
         ...initialState,
         modify: true,
+        modifyTargetId: action.id,
       };
     case 'OPEN_DELETE_DIALOG':
       return {

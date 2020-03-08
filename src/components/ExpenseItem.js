@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MdDelete } from 'react-icons/md';
+import { MdDelete, MdEdit } from 'react-icons/md';
 import {
   ocGray7,
   ocRed8,
@@ -9,6 +9,7 @@ import {
   ocOrange2,
   ocGrape3,
   ocBlue3,
+  ocIndigo8,
 } from '../constants/style';
 import tags from '../constants/tags';
 import { useDialogDispatch } from '../contexts/DialogContext';
@@ -34,7 +35,7 @@ const ItemBody = styled.div`
   }
 
   strong.item-amount {
-    margin-left: auto;
+    margin: 0 1rem 0 auto;
     padding: 0 0 0 1rem;
     font-size: 1.125rem;
     color: ${ocRed8};
@@ -62,14 +63,19 @@ const ItemTag = styled.span`
   background: ${({ tag = 'meal' }) => tagBackgroundColors[tag]};
 `;
 
-const DeleteIcon = styled.div`
+const Icon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.75rem;
-  width: 2.75rem;
+  height: 2rem;
+  width: 2rem;
 
   &:hover > svg {
+    stroke: ${ocIndigo8};
+    fill: ${ocIndigo8};
+  }
+
+  &.danger:hover > svg {
     stroke: ${ocRed8};
     fill: ${ocRed8};
   }
@@ -78,6 +84,8 @@ const DeleteIcon = styled.div`
 export const ExpenseItem = ({ id, category, title, amount }) => {
   const dialogDispatch = useDialogDispatch();
 
+  const handleEditClick = () =>
+    dialogDispatch({ type: 'OPEN_MODIFY_DIALOG', id });
   const handleDeleteClick = () =>
     dialogDispatch({ type: 'OPEN_DELETE_DIALOG', id });
 
@@ -86,9 +94,13 @@ export const ExpenseItem = ({ id, category, title, amount }) => {
       <ItemTag tag={category}>{tags[category]}</ItemTag>
       <p className="item-title">{title}</p>
       <strong className="item-amount">-{amount}원</strong>
-      <DeleteIcon onClick={handleDeleteClick}>
+
+      <Icon onClick={handleEditClick}>
+        <MdEdit size="1.5rem" />
+      </Icon>
+      <Icon className="danger" onClick={handleDeleteClick}>
         <MdDelete size="1.5rem" />
-      </DeleteIcon>
+      </Icon>
     </ItemBody>
   );
 };

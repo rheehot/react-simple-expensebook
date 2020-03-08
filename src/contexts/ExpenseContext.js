@@ -41,7 +41,6 @@ const initialState = {
 function expenseReducer(state, action) {
   switch (action.type) {
     case 'CREATE_ITEM':
-    case 'MODIFY_ITEM':
       return produce(state, draft => {
         draft.expenses.push({
           id: action.id,
@@ -49,6 +48,15 @@ function expenseReducer(state, action) {
           category: action.category,
           amount: action.amount,
         });
+      });
+    case 'MODIFY_ITEM':
+      return produce(state, draft => {
+        const targetItem = draft.expenses.find(
+          expense => expense.id === action.id
+        );
+        targetItem.amount = action.amount;
+        targetItem.title = action.title;
+        targetItem.category = action.category;
       });
     case 'DELETE_ITEM':
       return produce(state, draft => {

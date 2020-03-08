@@ -1,12 +1,45 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Dialog } from './Dialog';
 import { ItemForm } from './ItemForm';
+import {
+  useExpenseDispatch,
+  useExpenseState,
+} from '../contexts/ExpenseContext';
+import { useDialogDispatch, useDialogState } from '../contexts/DialogContext';
+import { useInput } from '../useInput';
 
-// TODO: 수정하려는 아이템의 정보를 받아서 ItemForm에 전달한다.
 export const ModifyItemDialog = () => {
+  const { expenses } = useExpenseState();
+  const expenseDispatch = useExpenseDispatch();
+  const { modify: isVisible, modifyTargetId } = useDialogState();
+  const dialogDispatch = useDialogDispatch();
+  const targetItem = useMemo(
+    () => expenses.find(expense => expense.id === modifyTargetId),
+    [expenses, modifyTargetId]
+  );
+  const { form, onChangeField, setForm } = useInput(targetItem);
+
+  const handleModifyCancel = () => dialogDispatch({ type: 'CLOSE_DIALOG' });
+  const handleModifyConfirm = () => {
+    expenseDispatch({ type: 'MODIFY_ITEM', ...form });
+    handleModifyCancel();
+  };
+
+  useEffect(() => {
+    if (targetItem) {
+      setForm(targetItem);
+    }
+  }, [setForm, targetItem]);
+
   return (
-    <Dialog title="지출 수정" confirmText="수정">
-      <ItemForm />
+    <Dialog
+      visible={isVisible}
+      title="지출 수정"
+      confirmText="수정"
+      onCancel={handleModifyCancel}
+      onConfirm={handleModifyConfirm}
+    >
+      <ItemForm onChangeField={onChangeField} formValues={form} />
     </Dialog>
   );
 };
