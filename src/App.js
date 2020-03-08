@@ -1,7 +1,8 @@
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
-import { ocGray3 } from './constants/style';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ocGray3, ocIndigo8, ocPink6, ocGray7 } from './constants/style';
 import { ExpensebookPage } from './components/ExpensebookPage';
+import { Dialog } from './components/Dialog';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -27,10 +28,18 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <>
+    <ThemeProvider
+      theme={{
+        buttonColors: {
+          indigo: ocIndigo8,
+          pink: ocPink6,
+          gray: ocGray7,
+        },
+      }}
+    >
       <GlobalStyle />
       <ExpensebookPage />
-    </>
+    </ThemeProvider>
   );
 }
 
