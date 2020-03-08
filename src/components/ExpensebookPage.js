@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ExpensebookHead } from './ExpensebookHead';
 
 const PageBody = styled.main`
   display: flex;
@@ -13,7 +14,11 @@ const PageBody = styled.main`
 `;
 
 export const ExpensebookPage = () => {
-  return <PageBody />;
+  return (
+    <PageBody>
+      <ExpensebookHead />
+    </PageBody>
+  );
 };
 
 ExpensebookPage.defaultProps = {};
