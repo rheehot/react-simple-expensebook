@@ -59,7 +59,7 @@ function expenseReducer(state, action) {
         return item.category === action.filter;
       });
     default:
-      throw new Error('Unhandled action');
+      throw new Error(`Unhandled action: ${action.type}`);
   }
 }
 
