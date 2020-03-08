@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ExpensebookHead } from './ExpensebookHead';
 import { ExpensebookFilter } from './ExpensebookFilter';
 import { ExpenseItemList } from './ExpenseItemList';
-import { CreateItem } from './CreateItem';
+import { CreateItemButton } from './CreateItemButon';
 
 const PageBody = styled.main`
   position: relative;
@@ -23,7 +23,7 @@ export const ExpensebookPage = () => {
       <ExpensebookHead />
       <ExpensebookFilter />
       <ExpenseItemList />
-      <CreateItem />
+      <CreateItemButton />
     </PageBody>
   );
 };

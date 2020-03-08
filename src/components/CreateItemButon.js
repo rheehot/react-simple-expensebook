@@ -28,7 +28,7 @@ const ItemButton = styled.button`
   }
 `;
 
-export const CreateItem = () => {
+export const CreateItemButton = () => {
   return (
     <ItemButton>
       <MdAdd size="4rem" color="white" />
@@ -36,6 +36,6 @@ export const CreateItem = () => {
   );
 };
 
-CreateItem.defaultProps = {};
+CreateItemButton.defaultProps = {};
 
-CreateItem.displayName = 'CreateItem';
+CreateItemButton.displayName = 'CreateItem';
