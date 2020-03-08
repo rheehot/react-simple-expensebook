@@ -2,7 +2,7 @@ import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { ocGray3, ocIndigo8, ocPink6, ocGray7 } from './constants/style';
 import { ExpensebookPage } from './components/ExpensebookPage';
-import { CreateItemDialog } from './components/CreateItemDialog';
+import { DialogProvider } from './contexts/DialogContext';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -37,9 +37,10 @@ function App() {
         },
       }}
     >
-      <GlobalStyle />
-      <ExpensebookPage />
-      <CreateItemDialog />
+      <DialogProvider>
+        <GlobalStyle />
+        <ExpensebookPage />
+      </DialogProvider>
     </ThemeProvider>
   );
 }

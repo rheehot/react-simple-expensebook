@@ -37,20 +37,32 @@ const ButtonGroup = styled.div`
 `;
 
 export const Dialog = ({
+  visible,
   children,
   title,
   cancelText,
   confirmText,
   confirmType,
+  onConfirm,
+  onCancel,
 }) => {
+  if (!visible) {
+    return null;
+  }
+
   return (
     <DimmedBackground>
       <DialogBody>
         <h3>{title}</h3>
         {children}
         <ButtonGroup>
-          <Button color="gray">{cancelText}</Button>
-          <Button color={confirmType === 'danger' ? 'pink' : 'indigo'}>
+          <Button color="gray" onClick={onCancel}>
+            {cancelText}
+          </Button>
+          <Button
+            color={confirmType === 'danger' ? 'pink' : 'indigo'}
+            onClick={onConfirm}
+          >
             {confirmText}
           </Button>
         </ButtonGroup>
@@ -63,6 +75,8 @@ Dialog.defaultProps = {
   cancelText: '취소',
   confirmText: '확인',
   confirmType: 'normal',
+  onConfirm: () => {},
+  onCancel: () => {},
 };
 
 Dialog.displayName = 'Dialog';

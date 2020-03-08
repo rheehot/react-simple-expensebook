@@ -4,6 +4,8 @@ import { ExpensebookHead } from './ExpensebookHead';
 import { ExpensebookFilter } from './ExpensebookFilter';
 import { ExpenseItemList } from './ExpenseItemList';
 import { CreateItemButton } from './CreateItemButon';
+import { CreateItemDialog } from './CreateItemDialog';
+import { useDialogDispatch, useDialogState } from '../contexts/DialogContext';
 
 const PageBody = styled.main`
   position: relative;
@@ -18,13 +20,22 @@ const PageBody = styled.main`
 `;
 
 export const ExpensebookPage = () => {
+  const { create: isCreateDialogVisible } = useDialogState();
+  const dialogDispatch = useDialogDispatch();
+
+  const handleCreateButtonClick = () =>
+    dialogDispatch({ type: 'OPEN_CREATE_DIALOG' });
+
   return (
-    <PageBody>
-      <ExpensebookHead />
-      <ExpensebookFilter />
-      <ExpenseItemList />
-      <CreateItemButton />
-    </PageBody>
+    <>
+      <PageBody>
+        <ExpensebookHead />
+        <ExpensebookFilter />
+        <ExpenseItemList />
+        <CreateItemButton onClick={handleCreateButtonClick} />
+      </PageBody>
+      <CreateItemDialog visible={isCreateDialogVisible} />
+    </>
   );
 };
 
