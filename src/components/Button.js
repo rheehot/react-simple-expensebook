@@ -55,7 +55,7 @@ const StyledButton = styled.button`
   ${colorStyles}
 
   & + & {
-    margin-left: 1rem;
+    margin-left: 0.75rem;
   }
 `;
 
