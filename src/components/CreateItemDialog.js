@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
 import { Dialog } from './Dialog';
 import { ItemForm } from './ItemForm';
-import { useDialogDispatch } from '../contexts/DialogContext';
+import { useDialogDispatch, useDialogState } from '../contexts/DialogContext';
 import { useInput } from '../useInput';
 import { useExpenseDispatch } from '../contexts/ExpenseContext';
 
-export const CreateItemDialog = ({ visible }) => {
+export const CreateItemDialog = () => {
+  const { create: isVisible } = useDialogState();
   const dialogDispatch = useDialogDispatch();
   const expenseDispatch = useExpenseDispatch();
   const { form, onChangeField, reset } = useInput();
@@ -31,7 +32,7 @@ export const CreateItemDialog = ({ visible }) => {
     <Dialog
       title="지출 등록"
       confirmText="등록"
-      visible={visible}
+      visible={isVisible}
       onCancel={handleDialogCancel}
       onConfirm={handleCreateConfirm}
     >

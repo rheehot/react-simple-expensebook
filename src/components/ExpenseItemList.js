@@ -16,12 +16,7 @@ export const ExpenseItemList = () => {
   return (
     <ItemListWrapper>
       {(currentFilter === 'all' ? expenses : filteredExpenses).map(expense => (
-        <ExpenseItem
-          key={expense.id}
-          category={expense.category}
-          title={expense.title}
-          amount={expense.amount}
-        />
+        <ExpenseItem key={expense.id} {...expense} />
       ))}
     </ItemListWrapper>
   );

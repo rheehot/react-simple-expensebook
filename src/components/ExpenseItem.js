@@ -11,6 +11,7 @@ import {
   ocBlue3,
 } from '../constants/style';
 import tags from '../constants/tags';
+import { useDialogDispatch } from '../contexts/DialogContext';
 
 const ItemBody = styled.div`
   display: flex;
@@ -74,13 +75,18 @@ const DeleteIcon = styled.div`
   }
 `;
 
-export const ExpenseItem = ({ category, title, amount }) => {
+export const ExpenseItem = ({ id, category, title, amount }) => {
+  const dialogDispatch = useDialogDispatch();
+
+  const handleDeleteClick = () =>
+    dialogDispatch({ type: 'OPEN_DELETE_DIALOG', id });
+
   return (
     <ItemBody>
       <ItemTag tag={category}>{tags[category]}</ItemTag>
       <p className="item-title">{title}</p>
       <strong className="item-amount">-{amount}원</strong>
-      <DeleteIcon>
+      <DeleteIcon onClick={handleDeleteClick}>
         <MdDelete size="1.5rem" />
       </DeleteIcon>
     </ItemBody>
