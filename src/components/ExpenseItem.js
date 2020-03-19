@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MdDelete, MdEdit } from 'react-icons/md';
+
 import {
   ocGray7,
   ocRed8,
