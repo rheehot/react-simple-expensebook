@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo } from 'react';
 import { Dialog } from './Dialog';
 import { ItemForm } from './ItemForm';
+
 import {
   useExpenseDispatch,
   useExpenseState,
 } from '../contexts/ExpenseContext';
 import { useDialogDispatch, useDialogState } from '../contexts/DialogContext';
-import { useInput } from '../useInput';
+import { useInput } from '../hooks/useInput';
 
 export const ModifyItemDialog = () => {
   const { expenses } = useExpenseState();

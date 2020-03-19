@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export function useInput(initialValue) {
+function useInput(initialValue) {
   const [form, setForm] = useState(
     () =>
       initialValue || {
@@ -29,3 +29,5 @@ export function useInput(initialValue) {
     reset: handleReset,
   };
 }
+
+export default useInput;

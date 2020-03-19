@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { Dialog } from './Dialog';
 import { ItemForm } from './ItemForm';
+
 import { useDialogDispatch, useDialogState } from '../contexts/DialogContext';
-import { useInput } from '../useInput';
 import { useExpenseDispatch } from '../contexts/ExpenseContext';
+import { useInput } from '../hooks/useInput';
 
 export const CreateItemDialog = () => {
   const { create: isVisible } = useDialogState();
